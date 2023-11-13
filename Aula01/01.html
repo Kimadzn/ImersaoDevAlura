@@ -1,10 +1,42 @@
-<div class="container">
-    <h1 class="page-title">
-      Conversor de moedas
-    </h1>
-    <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="page-logo" alt="">
-  </div>
-  <a href="https://alura.com.br/" target="_blank">
-    <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
-    <img src="https://caelum-online-public.s3.amazonaws.com/assets-imersaodev/Convers%C3%A3o+1.png">
-  </a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Real para Dólar</title>
+</head>
+<body>
+
+  <h1>Conversor de Real para Dólar</h1>
+
+  <label for="valorEmReais">Digite o valor em reais: R$ </label>
+  <input type="number" id="valorEmReais" placeholder="Insira o valor">
+
+  <button onclick="converter()">Converter</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function converter() {
+      // Obter o valor em reais do campo de entrada
+      const valorEmReais = parseFloat(document.getElementById("valorEmReais").value);
+
+      // Substitua pela taxa de câmbio atual
+      const taxaDeCambio = 5.35;
+
+      // Verificar se o valor inserido é válido
+      if (isNaN(valorEmReais) || valorEmReais <= 0) {
+        document.getElementById("resultado").textContent = "Por favor, insira um valor válido em reais.";
+        return;
+      }
+
+      // Calcular o valor em dólares
+      const valorEmDolar = valorEmReais / taxaDeCambio;
+
+      // Exibir o resultado na página
+      document.getElementById("resultado").textContent = `R$ ${valorEmReais.toFixed(2)} equivale a $ ${valorEmDolar.toFixed(2)} dólares (com base na taxa de câmbio de ${taxaDeCambio}).`;
+    }
+  </script>
+
+</body>
+</html>
